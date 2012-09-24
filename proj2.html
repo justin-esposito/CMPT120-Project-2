@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="escape" content="text based java game" />
+		<title>Escape</title>
+		<style>
+		h1 {font-style:bold;}
+		</style>
+		<script type="text/javascript">
+		//score variables
+			var score_north = 0;
+			var score_south = 0;
+			var score_east = 0;
+			var score_west = 0;
+			function move_west(){
+				var west= "west text here"
+				score_west = 5;
+				alert(west);
+			}
+			function move_east(){
+				var east= "east text here";
+				score_east = 5;
+				alert(east);
+			}
+			function move_north(){
+				var north= "north text here";
+				score_north = 5;
+				alert(north);
+			}
+			function move_south(){
+				var south= "south text here";
+				alert(south);
+				score_south = 5;				
+			}
+			function score(){
+				alert(score_north + score_south + score_east + score_west);
+			}
+			//for future reference, to update text
+			/*function updateText(msg){
+				var ta = document.getElementById("taGame")
+				ta.value=msg + "/n" + ta.value
+			}*/
+		</script>
+	</head>
+	<body>
+		<h1> Escape </h1>
+		<input type=button value=North onclick="move_north()"/>
+		<input type=button value=South onclick="move_south()"/>
+		<input type=button value=East onclick="move_east()"/>
+		<input type=button value=West onclick="move_west()"/>
+		<input type=button value=scorecheck onclick="score()"/>
+		<br>
+		<textarea id= "taGame" rows="8" cols="40">You wake up in a room lying down on a couch. You have no recollection of what happened. Getting up off of the couch, you walk to the middle of the room.</textarea>
+		<a href="mailto:jespo29@aol.com">email me</a>
+	</body>
+</html>
+
+		
