@@ -10,7 +10,8 @@ Project 2
 		<style>
 		h1 {font-style:bold;}
 		</style>
-		<script type="text/javascript">
+		<script type="text/javascript" src=locations.js>
+			/*
 			//score variables
 			var score_north = 0;
 			var score_south = 0;
@@ -40,8 +41,7 @@ Project 2
 				
 				move(direction);
 			}
-				
-			//generic move function
+	
 			function move(direction){
 				if (direction === NORTH){
 					if (currentLocation == 21){
@@ -70,8 +70,10 @@ Project 2
 				} else {
 					updateText("Unknown direction" + direction)
 				}
-					
-			}
+				}
+				
+				
+			
 			//will mess with score later
 			function score(){
 				alert(score_north + score_south + score_east + score_west);
@@ -84,9 +86,10 @@ Project 2
 			}
 			
 			//why no work
-			/*if (currentLocation = 22 && move(NORTH)){
-				alert("can't do that bro.")
-				}*/
+			if (currentLocation === 22 && move(NORTH)){
+				currentLocation !== 1
+				updateText("can't do that bro.")
+				}
 				
 				
 				
@@ -110,20 +113,52 @@ Project 2
 						average = (total / count);
 						updateText( Total: " + total + "Avg: " + average);
 			*/
+			
+			//spaceship example (locations)
+			/*function spaceShip (_name, _clazz, _creator, _hp){
+				this.name  = _name
+				this.clazz = _clazz;
+				this.creator = _creator;
+				this.hp = _hp;
+				this.color = "silver";
+				
+				this.toString = function() {
+					var retVal = "";
+					retval= "[spaceShip]" +
+							" name:" + this.name +
+							" class:" + this.clazz +
+							" creator:" + this.creator +
+							" horse power:" + this.hp +
+							" color:" + this.color;
+					return retVal;
+					}
+				}
+			function tester (){
+			//create myShip as an instance of the spaceShip prototype.
+			myship = new spaceShip ("Alan", "CS-1", "Kirok", 1.5);
+			yourShip = new spaceShip ("Justin", "Bashful", "Sleepy", "Dopey")
+			updateText(myShip.name + "," myship.hp + "," + myShip.color);
+			
+			*/
+			
 		</script>
 	</head>
-	<body>
+	<body onload= "init();">
 		<h1> Escape </h1>
-		<input type=button value=North onclick="move(NORTH)"/>
-		<input type=button value=South onclick="move(SOUTH)"/>
-		<input type=button value=East onclick="move(EAST)"/>
-		<input type=button value=West onclick="move(WEST)"/>
+		<input type=button value=North id= "northBtn" onclick="move(NORTH)"/>
+		<input type=button value=South id = "southBtn" onclick="move(SOUTH)"/>
+		<input type=button value=East  id = "eastBtn" onclick="move(EAST)"/>
+		<input type=button value=West id = "westBtn" onclick="move(WEST)"/>
 		<input type=button value=scorecheck onclick="score()"/>
 		<input type=text id= "txtcmd" />
-		<input type= "button" value= "Go" id="txtcmd" onclick="movecheck()"/>
+		<input type= "button" value= "Go" id="txtcmd" onclick="txtcmds()"/>
 		<br>
-		<textarea id= "taGame" rows="8" cols="40">You wake up in a room lying down on a couch. You have no recollection of what happened. Getting up off of the couch, you walk to the middle of the room.</textarea>
+		<textarea id= "taGame" rows="8" cols="40"> </textarea>
 		<a href="mailto:jespo29@aol.com">email me yolo</a>
+		<br>
+		<img src = map.jpg>
+		<br>
+		the map in beautiful hi res detail
 	</body>
 </html>
 
