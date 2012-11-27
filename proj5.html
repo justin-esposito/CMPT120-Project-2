@@ -1,0 +1,165 @@
+<!-- Justin Esposito, Intro to Programming - 11/27/12
+Project 5
+-->
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="escape" content="text based java game" />
+		<title>Escape</title>
+		<style>
+		h1 {font-style:bold;}
+		</style>
+		<script type="text/javascript" src=locations.js>
+			/*
+			//score variables
+			var score_north = 0;
+			var score_south = 0;
+			var score_east = 0;
+			var score_west = 0;
+			//direction variables
+			var NORTH = 1;
+			var SOUTH = 11;
+			var EAST = 21;
+			var WEST = 31;
+			var NORTH1 = 2;
+			//play with this
+			var currentLocation = 0;
+			
+			function movecheck(){
+				var check = document.getElementById("txtcmd");
+				//alert(check.value);
+				if ((check.value === "n") ||(check.value === "N")){
+				   direction = NORTH;
+				} else if ((check.value === "s") || (check.value === "S" )){
+				   direction = SOUTH;
+				} else if ((check.value === "e") || (check.value === "E")){
+				   direction = EAST;
+				} else if ((check.value === "w") || (check.value === "W")){
+				   direction = WEST;
+				};
+				
+				move(direction);
+			}
+	
+			function move(direction){
+				if (direction === NORTH){
+					if (currentLocation == 21){
+						currentLocation = 22;
+						updateText ("moving northeast")
+	
+					}else{
+						currentLocation = 1;
+						updateText("moving north")
+					}
+				} else if (direction === SOUTH){
+					if (currentLocation == 31){
+						currentLocation = 32;
+						updateText ("moving southwest")
+	
+					}else{
+						currentLocation = 11;
+						updateText("moving south")
+					}
+				} else if (direction === EAST) {
+					currentLocation = 21;
+					updateText("moving east")
+				} else if (direction === WEST) {
+					currentLocation = 31;
+					updateText("moving west")
+				} else {
+					updateText("Unknown direction" + direction)
+				}
+				}
+				
+				
+			
+			//will mess with score later
+			function score(){
+				alert(score_north + score_south + score_east + score_west);
+			}
+			//to have dynamic text updates
+			function updateText(msg){
+				msg = msg+ "[" + currentLocation + "]";
+				var ta = document.getElementById("taGame")
+				ta.value=msg + "\n" + ta.value
+			}
+			
+			//why no work
+			if (currentLocation === 22 && move(NORTH)){
+				currentLocation !== 1
+				updateText("can't do that bro.")
+				}
+				
+				
+				
+			//while loop example
+		/*	var total = 0;
+			var done = false;
+			var count = 0;
+			while (!done){
+				var scoreStr = "";
+				//take score as stirng
+				scoreStr = prompt ("enter a score, 0 to quit")
+				//convert score as a string
+				var scoreInt=0;
+				scoreInt = parseInt(scoreStr);
+				//check tosee whether or not we're done
+				if (scoreInt === 0 {
+					done = true;
+				} else {
+					    total=total + scoreInt;
+						count = count + 1;
+						average = (total / count);
+						updateText( Total: " + total + "Avg: " + average);
+			*/
+			
+			//spaceship example (locations)
+			/*function spaceShip (_name, _clazz, _creator, _hp){
+				this.name  = _name
+				this.clazz = _clazz;
+				this.creator = _creator;
+				this.hp = _hp;
+				this.color = "silver";
+				
+				this.toString = function() {
+					var retVal = "";
+					retval= "[spaceShip]" +
+							" name:" + this.name +
+							" class:" + this.clazz +
+							" creator:" + this.creator +
+							" horse power:" + this.hp +
+							" color:" + this.color;
+					return retVal;
+					}
+				}
+			function tester (){
+			//create myShip as an instance of the spaceShip prototype.
+			myship = new spaceShip ("Alan", "CS-1", "Kirok", 1.5);
+			yourShip = new spaceShip ("Justin", "Bashful", "Sleepy", "Dopey")
+			updateText(myShip.name + "," myship.hp + "," + myShip.color);
+			
+			*/
+			
+		</script>
+	</head>
+	<body onload= "init();">
+		<h1> Escape </h1>
+		<input type=button value=North id= "northBtn" onclick="move(NORTH)"/>
+		<input type=button value=South id = "southBtn" onclick="move(SOUTH)"/>
+		<input type=button value=East  id = "eastBtn" onclick="move(EAST)"/>
+		<input type=button value=West id = "westBtn" onclick="move(WEST)"/>
+		<input type=button value=scorecheck onclick="score()"/>
+		<input type=text id= "txtcmd" />
+		<input type= "button" value= "Go" id="txtcmd" onclick="txtcmds()"/>
+		<br>
+		<textarea id= "taGame" rows="8" cols="40"> </textarea>
+		<a href="mailto:jespo29@aol.com">email me yolo</a>
+		<br>
+		<img src = map.jpg>
+		<br>
+		the map in beautiful hi res detail
+	</body>
+</html>
+
+		
