@@ -7,6 +7,8 @@
 			var WEST = 31;
 			var direction = ""
 			var invDisplay = ""
+			var inventory = new Array;
+			
 			
 			function init() {
 				updateText("You wake up in a room lying down on a couch. You have no recollection of what happened. Getting up off of the couch, you walk to the middle of the room.");
@@ -23,12 +25,18 @@
 				   move(EAST);
 				} else if ((check.value === "w") || (check.value === "W")) {
 				   move(WEST);
-				} else if (check.value === "take x"){
+				} else if ((check.value === "take item x") && (currentLocation === "default")){
+					take(check.value);
+				} else if ((check.value === "take item y") && (currentLocation === "east1")){
+					take(check.value);
+				} else if ((check.value === "take item z") && (currentLocation === "west1")){
+					take(check.value);
+				} else if ((check.value === "take item a") && (currentLocation === "northwest1")){
 					take(check.value);
 				} else if ((check.value === "help") || (check.value === "Help") || (check.value === "HELP")) {
 					updateText("insert cmdlist");
 				} else if (check.value === "inventory") {
-					updateText("You have in your inventory:" + invDisplay);
+					updateText("You have in your inventory:" + inventory);
 				} else {
 					updateText("Unknown command");
 				}
@@ -71,7 +79,7 @@
 				updateLocation();
 				}*/
 				
-		function move(direction) {
+				function move(direction) {
           switch (direction) {
             case NORTH:
               switch(currentLocation) {
@@ -227,63 +235,86 @@
 			
 			//location text functions
 	  function defaultloc(){
-        updateText("default location")
+		defaultlocation = new Location (currentLocation, "defaultloc", "the default location", "ItemX");
+        updateText(defaultlocation)
+		location_itemx = new item ("01", "ItemX", "insert item description")
+		updateText (location_itemx)
       }
       function north2(){
-        updateText("north2")
+		northtwo = new Location (currentLocation, "north2", "x=0, y=2", "No Item");
+        updateText(northtwo)
       }
       function north1(){
-        updateText("north1")
+		northone = new Location (currentLocation, "north1", "x=0, y=1", "No Item");
+        updateText(northone)
       }
       function east2(){
-        updateText("east2")
+		easttwo = new Location (currentLocation, "east2", "x=2, y=0", "No Item");
+        updateText(easttwo)
       }
       function east1(){
-        updateText("east1")
+		eastone = new Location (currentLocation, "east1", "x=1, y=0", "Item Y");
+        updateText(eastone)
+		location_itemy = new item ("02", "ItemY", "insert item description")
+		updateText (location_itemy)
       }
       function west2(){
-        updateText("west2")
+		westtwo = new Location (currentLocation, "west", "x=-2, y=0", "No Item");
+        updateText(westtwo)
       }
       function west1(){
-        updateText("west1")
+		westone = new Location (currentLocation, "west1", "x=-1, y=0", "Item Z");
+        updateText(westone)
+		location_itemz = new item ("03", "ItemZ", "insert item description")
+		updateText (location_itemz)
       }
       function south2(){
-        updateText("south2")
+		southtwo = new Location (currentLocation, "south2", "x=0, y=-2", "No Item");
+        updateText(southtwo)
       }
       function south1(){
-        updateText("south1")
+		southone = new Location (currentLocation, "south1", "x=0, y=-1", "No Item");
+        updateText(southone)
       }
 	  function northwest1(){
-		updateText("northwest1")
+		northwestone = new Location (currentLocation, "northwest1", "x=-1, y=1", "Item A");
+		updateText(northwestone)
+		location_itema = new item ("04", "ItemA", "insert item description")
+		updateText (location_itema)
 	  }
         
 			//to have dynamic text updates
 			function updateText(msg){
-				msg = msg+ "[" + currentLocation + "]";
+				msg = msg;
 				var ta = document.getElementById("taGame")
 				ta.value=msg + "\n" + ta.value
 			}
-			//for items
-			/*function take(){
-			var check = document.getElementById("txtcmd");
-			var item = "";
-				switch(item){
-					case "take x":
-						hasItemX=true;
-					break;
-			}
-			}*/
+			//Can't figure out how to not allow infinite item pickups with an array.
 			function take(){
 				var check = document.getElementById("txtcmd");
-				if ((currentLocation = "default") && (check.value = "take x")){
-					invDisplay = invDisplay + "Item X";
+				if ((currentLocation = "default") && (check.value === "take item x")){
+					updateText("Taken Item X")
+					inventory.push("ItemX")
 				}
+				if ((currentlocation = "west1") && (check.value === "take item z")){
+					updateText ("Taken Item Z")
+					inventory.push("ItemZ")
+				}
+				if ((currentlocation = "northwest1") && (check.value === "take item a")){
+					updateText ("Taken Item A")
+					inventory.push("ItemA")
+				}
+				if ((currentlocation = "east1") && (check.value === "take item y")){
+					updateText ("Taken Item Y")
+					inventory.push("ItemY")
+				}
+				else updateText("");
 			}
-					
+
 				
-			//having these totally break my game..they work kind of. can't debug this will keep enabled anyway
+			//having these totally break my game..they work kind of.
 			
-				function northBtnDisable(){
+				/*function northBtnDisable(){
 				  if ((currentLocation ="north2") || (currentLocation ="east2") || 
 				  (currentLocation ="northwest1") || (currentLocation ="east1") || (currentLocation ="west1")){
 					document.getElementById("northBtn").disabled=true
@@ -320,61 +351,39 @@
 						document.getElementById("westBtn").disabled=false
 					}
 				}
-			
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			//while loop example
-		/*	var total = 0;
-			var done = false;
-			var count = 0;
-			while (!done){
-				var scoreStr = "";
-				//take score as stirng
-				scoreStr = prompt ("enter a score, 0 to quit")
-				//convert score as a string
-				var scoreInt=0;
-				scoreInt = parseInt(scoreStr);
-				//check tosee whether or not we're done
-				if (scoreInt === 0 {
-					done = true;
-				} else {
-					    total=total + scoreInt;
-						count = count + 1;
-						average = (total / count);
-						updateText( Total: " + total + "Avg: " + average);
 			*/
-			
-			//spaceship example (locations)
-		/*	function spaceShip (_name, _clazz, _creator, _hp){
-				this.name  = _name
-				this.clazz = _clazz;
-				this.creator = _creator;
-				this.hp = _hp;
-				this.color = "silver";
-				
-				this.toString = function() {
-					var retVal = "";
-					retval= "[spaceShip]" +
-							" name:" + this.name +
-							" class:" + this.clazz +
-							" creator:" + this.creator +
-							" horse power:" + this.hp +
-							" color:" + this.color;
-					return retVal;
+				function Location(_id, _name, _description, _item) {
+					this.id = _id;
+					this.name = _name;
+					this.description = _description;
+					this.item = _item;
+						
+					this.toString= function(){
+						var retVal = "";
+						retVal= "[Location]" + "\n" +
+								"id:" + this.id + "\n" +
+								"name:" + this.name + "\n" +
+								"description:" + this.description + "\n" +
+								"item:" + this.item + "\n";
+						return retVal;
+						}
 					}
-				}
-			function tester (){
-			//create myShip as an instance of the spaceShip prototype.
-			myship = new spaceShip ("Alan", "CS-1", "Kirok", 1.5);
-			yourShip = new spaceShip ("Justin", "Bashful", "Sleepy", "Dopey")
-			updateText(myShip.name + "," myship.hp + "," + myShip.color);
-			
-			*/
+
+				function item(_id, _name, _description) {
+					this.id = _id;
+					this.name = _name;
+					this.description = _description;		
+					this.toString= function(){
+						var retVal = "";
+						retVal= "[Item]" + "\n" +
+								"id:" + this.id + "\n" +
+								"name:" + this.name + "\n" +
+								"description:" + this.description + "\n"
+						return retVal;
+						}
+					}
+				
+				
+				
+				
+	
