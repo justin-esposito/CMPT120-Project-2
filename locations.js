@@ -314,9 +314,9 @@
 				
 			//having these totally break my game..they work kind of.
 			
-				/*function northBtnDisable(){
-				  if ((currentLocation ="north2") || (currentLocation ="east2") || 
-				  (currentLocation ="northwest1") || (currentLocation ="east1") || (currentLocation ="west1")){
+				function northBtnDisable(){
+				  if ((currentLocation == "north2") || (currentLocation == "east2") || 
+				  (currentLocation == "northwest1") || (currentLocation == "east1") || (currentLocation == "west1")){
 					document.getElementById("northBtn").disabled=true
 					} else {
 						document.getElementById("northBtn").disabled=false
@@ -324,8 +324,8 @@
 				}
 
 				function southBtnDisable(){
-				  if ((currentLocation ="south2") || (currentLocation ="east2") || 
-				  (currentLocation ="west2") ||(currentLocation ="east1") || (currentLocation ="west1")) {
+				  if ((currentLocation == "south2") || (currentLocation == "east2") || 
+				  (currentLocation == "west2") ||(currentLocation == "east1") || (currentLocation == "west1")) {
 					document.getElementById("southBtn").disabled=true
 					} else { 
 						document.getElementById("southBtn").disabled=false
@@ -333,9 +333,9 @@
 				}
 
 				function eastBtnDisable(){
-				  if ((currentLocation ="north2") || (currentLocation ="south2") || 
-				  (currentLocation ="south1") || (currentLocation ="north1") || 
-				  (currentLocation ="east2") || (currentLocation ="northwest1")) {
+				  if ((currentLocation == "north2") || (currentLocation == "south2") || 
+				  (currentLocation == "south1") || (currentLocation == "north1") || 
+				  (currentLocation == "east2") || (currentLocation == "northwest1")) {
 					document.getElementById("eastBtn").disabled=true
 					} else {
 						document.getElementById("eastBtn").disabled=false
@@ -343,15 +343,15 @@
 				}
 
 				function westBtnDisable(){
-				  if ((currentLocation ="north2") || (currentLocation ="north1") || 
-				  (currentLocation ="south1") || (currentLocation ="south2") || 
-				  (currentLocation ="west2") || (currentLocation ="northwest1")){
+				  if ((currentLocation == "north2") || (currentLocation == "north1") || 
+				  (currentLocation == "south1") || (currentLocation == "south2") || 
+				  (currentLocation == "west2") || (currentLocation == "northwest1")){
 					document.getElementById("westBtn").disabled=true
 					} else {
 						document.getElementById("westBtn").disabled=false
 					}
 				}
-			*/
+			
 				function Location(_id, _name, _description, _item) {
 					this.id = _id;
 					this.name = _name;
