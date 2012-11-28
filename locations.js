@@ -312,7 +312,7 @@
 			}
 
 				
-			//having these totally break my game..they work kind of.
+			//visually disable buttons based on currentLocation
 			
 				function northBtnDisable(){
 				  if ((currentLocation == "north2") || (currentLocation == "east2") || 
