@@ -1,0 +1,35 @@
+<!-- Justin Esposito, Intro to Programming - 8/30/12
+Project 4
+-->
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="coloffulz" content="text based java game" />
+		<title>Colorful Rooms</title>
+		<style>
+		h1 {font-style:bold;}
+		</style>
+		<script type="text/javascript" src=locations.js>
+		
+		</script>
+	</head>
+	<body onload= "init();">
+		<h1> Colorful Rooms </h1>
+		<input type=button value=North id= "northBtn" onclick="move(NORTH)"/>
+		<input type=button value=South id = "southBtn" onclick="move(SOUTH)"/>
+		<input type=button value=East  id = "eastBtn" onclick="move(EAST)"/>
+		<input type=button value=West id = "westBtn" onclick="move(WEST)"/>
+		<input type=text id= "txtcmd" />
+		<input type= "button" value= "Go" id="txtcmdbtn" onclick="txtcmds()"/>
+		<br>
+		<textarea id= "taGame" rows="8" cols="40"> </textarea>
+		<a href="mailto:jespo29@aol.com">email me yolo</a>
+		<br>
+		<img src = map.jpg>
+		<br>
+		the map in beautiful hi res detail
+	</body>
+</html>
+
+		
